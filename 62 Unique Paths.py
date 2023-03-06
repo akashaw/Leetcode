@@ -21,6 +21,17 @@ Explanation: From the top-left corner, there are a total of 3 ways to reach the 
 Constraints:
 1 <= m, n <= 100
 '''
+
+from math import factorial
+
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        # There are in total m+n-2 moves in which m-1 is to the bottom and n-1 is to the right. As a result, there are m+n-2 choose m-1 total paths.
+
+        return int(factorial(m + n - 2) 
+                                         / 
+                                            ( factorial(m + n - 2 - (m - 1)) * factorial(m - 1)))
+'''
 class Solution:
     mem = {}
 
@@ -43,3 +54,4 @@ class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         Solution.mem = [[-1 for _ in range(n)] for _ in range(m)]
         return self.func(m, n, 0, 0)
+'''
